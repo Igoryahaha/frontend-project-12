@@ -1,11 +1,11 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/Igoryahaha/frontend-project-12/workflows/hexlet-check/badge.svg)](https://github.com/Igoryahaha/frontend-project-12/actions)",
-  "main": "frontend/src/index.js",
+  "description": "Simple version of Slack",
+  "main": "index.js",
   "scripts": {
     "build": "npm run build --prefix frontend",
-    "start": "npx start-server -s ./frontend/build",
+    "start": "start-server -s ./frontend/build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "cd frontend && npm ci"
   },
@@ -13,10 +13,13 @@
     "type": "git",
     "url": "git+https://github.com/Igoryahaha/frontend-project-12.git"
   },
-  "author": "",
+  "author": "Igor Kazantsev",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Igoryahaha/frontend-project-12/issues"
   },
-  "homepage": "https://github.com/Igoryahaha/frontend-project-12#readme"
+  "homepage": "https://github.com/Igoryahaha/frontend-project-12#readme",
+  "dependencies": {
+    "@hexlet/chat-server": "^1.1.6"
+  }
 }
