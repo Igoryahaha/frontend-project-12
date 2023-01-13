@@ -1,5 +1,5 @@
 export default {
-  apiLoginPath: () => '/api/v1/login',
-  login: () => 'login',
+  login: () => '/login',
+  main: () => '/',
   notFound: () => '*',
 };
