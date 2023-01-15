@@ -63,9 +63,9 @@ const Login = () => {
         errors,
         isSubmitting,
       }) => (
-        <Form onSubmit={handleSubmit} className="formLogin">
-          <Container>
-            <Card className="m-5 shadow-sm">
+        <Form onSubmit={handleSubmit} className="formLogin h-100">
+          <Container className="d-flex justify-content-center align-content-center">
+            <Card className="m-5 shadow-sm col-12 col-md-8 ">
               <Card.Body className="p-5">
                 <Row>
                   <Col xs={{ span: 6 }} sm={{ span: 6 }}>
