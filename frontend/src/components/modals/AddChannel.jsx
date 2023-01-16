@@ -26,8 +26,6 @@ const AddChannel = () => {
 
   const hideHandle = () => {
     dispatch(UIActions.hideModal());
-    console.log(process.env, process.env.REACT_APP_ROLLBAR_TOKEN, process.env.NODE_ENV);
-    throw new Error('asdasd');
   };
 
   return (
