@@ -39,23 +39,23 @@ const DeleteChannel = () => {
       centered
     >
       <Modal.Header closeButton onHide={hideHandle}>
-        <Modal.Title>{t('delete_channel')}</Modal.Title>
+        <Modal.Title>{t('modals.delete_channel')}</Modal.Title>
 
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={deleteHandle}>
           <p style={{ fontSize: '1.25rem', fontWeight: '300' }}>
             {' '}
-            {t('are_you_sure')}
+            {t('modals.delete_approve')}
           </p>
           <div className="text-end">
             <button type="button" className="btn btn-secondary btn-block mx-1" onClick={() => hideHandle()} disabled={isSubmitting}>
               {' '}
-              {t('cancel')}
+              {t('modals.cancel')}
               {' '}
             </button>
             <button type="submit" className="btn btn-danger btn-block" ref={inputEl} disabled={isSubmitting}>
-              {t('delete')}
+              {t('main.delete')}
             </button>
           </div>
         </form>

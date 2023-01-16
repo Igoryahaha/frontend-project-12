@@ -26,6 +26,7 @@ const AddChannel = () => {
 
   const hideHandle = () => {
     dispatch(UIActions.hideModal());
+    throw new Error('asdasd');
   };
 
   return (
@@ -35,7 +36,7 @@ const AddChannel = () => {
       centered
     >
       <Modal.Header closeButton onHide={hideHandle}>
-        <Modal.Title>{t('add_channel')}</Modal.Title>
+        <Modal.Title>{t('modals.add_channel')}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
@@ -60,7 +61,7 @@ const AddChannel = () => {
             isSubmitting,
           }) => (
             <Form onSubmit={handleSubmit}>
-              <Form.Label htmlFor="name" visuallyHidden="false">{t('channel_name')}</Form.Label>
+              <Form.Label htmlFor="name" visuallyHidden="false">{t('modals.channel_name')}</Form.Label>
               <FormControl
                 type="text"
                 name="name"
@@ -75,8 +76,8 @@ const AddChannel = () => {
                 <div className="invalid-feedback">{t(errors.name)}</div>
               ) : null}
               <div className="text-end">
-                <button type="button" className="btn btn-secondary btn-block mx-1" onClick={() => hideHandle()} disabled={isSubmitting}>{t('cancel')}</button>
-                <button type="submit" className="btn btn-primary btn-block" disabled={isSubmitting}>{t('send')}</button>
+                <button type="button" className="btn btn-secondary btn-block mx-1" onClick={() => hideHandle()} disabled={isSubmitting}>{t('modals.cancel')}</button>
+                <button type="submit" className="btn btn-primary btn-block" disabled={isSubmitting}>{t('modals.send')}</button>
               </div>
             </Form>
           )}

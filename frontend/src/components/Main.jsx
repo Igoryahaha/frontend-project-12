@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { PlusSquare } from 'react-bootstrap-icons';
+import { toast } from 'react-toastify';
 
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +13,7 @@ import { actions as UIActions } from '../slices/UISlice.js';
 
 import useAuth from '../hooks/useAuth.jsx';
 import getData from '../utils/api/getData.js';
+import toastParams from '../toastParams.js';
 import Channels from './Channels.jsx';
 import Chat from './Chat.jsx';
 
@@ -22,11 +25,15 @@ const Main = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getData(headers);
-      const { channels, currentChannelId, messages } = data;
-      dispatch(channelsActions.addChannels(channels));
-      dispatch(messagesActions.addMessages(messages));
-      dispatch(UIActions.setCurrentChannelId({ currentChannelId }));
+      try {
+        const data = await getData(headers);
+        const { channels, currentChannelId, messages } = data;
+        dispatch(channelsActions.addChannels(channels));
+        dispatch(messagesActions.addMessages(messages));
+        dispatch(UIActions.setCurrentChannelId({ currentChannelId }));
+      } catch (e) {
+        toast.warn(t('toast.dataFetchError'), toastParams);
+      }
     };
 
     fetchData();
@@ -44,7 +51,7 @@ const Main = () => {
           <div className="d-flex justify-content-between mb-2 ps-3 pe-2">
             <span>{t('main.channels')}</span>
             <button className="p-0 text-primary btn btn-group-vertical" type="button" onClick={() => openAddChannelModal()}>
-              <ion-icon size="small" name="add-outline" />
+              <PlusSquare fill="currentColor" width="20" height="20" size="small" />
               <span className="visually-hidden">+</span>
             </button>
           </div>

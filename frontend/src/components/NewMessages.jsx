@@ -36,8 +36,6 @@ const NewMessages = (props) => {
     setMessage('');
   };
 
-  console.log(currentChannelId);
-
   return (
     <div className="mt-auto px-5 py-2">
       <Form className="py-1 border rounded-2" onSubmit={(e) => handleSubmit(e)}>

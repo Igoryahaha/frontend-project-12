@@ -37,7 +37,7 @@ const RenameChannel = () => {
       centered
     >
       <Modal.Header closeButton onHide={hideHandle}>
-        <Modal.Title>{t('rename_channel')}</Modal.Title>
+        <Modal.Title>{t('modals.rename_channel')}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
@@ -61,7 +61,7 @@ const RenameChannel = () => {
           }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group>
-                <Form.Label htmlFor="name" className="visually-hidden">{t('channel_name')}</Form.Label>
+                <Form.Label htmlFor="name" className="visually-hidden">{t('modals.channel_name')}</Form.Label>
                 <FormControl
                   type="text"
                   name="name"
@@ -76,8 +76,8 @@ const RenameChannel = () => {
                   <div className="invalid-feedback">{t(errors.name)}</div>
                 ) : null}
                 <div className="text-end">
-                  <button type="button" className="btn btn-secondary btn-block mx-1" onClick={() => hideHandle()}>{t('cancel')}</button>
-                  <button type="submit" className="btn btn-primary btn-block">{t('send')}</button>
+                  <button type="button" className="btn btn-secondary btn-block mx-1" onClick={() => hideHandle()}>{t('modals.cancel')}</button>
+                  <button type="submit" className="btn btn-primary btn-block">{t('modals.send')}</button>
                 </div>
               </Form.Group>
             </Form>

@@ -8,10 +8,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Alert from 'react-bootstrap/Alert';
-import avatar from '../images/avatar.jpg';
+import loginImg from '../images/login.jpg';
 import { loginSchema } from '../utils/validation';
 import fetchAuth from '../utils/api/auth';
 import useAuth from '../hooks/useAuth.jsx';
+import routes from '../routes';
 
 const Login = () => {
   const { t } = useTranslation();
@@ -75,7 +76,7 @@ const Login = () => {
                     >
                       <img
                         className="rounded-circle"
-                        src={avatar}
+                        src={loginImg}
                         alt={t('join')}
                       />
                     </div>
@@ -139,7 +140,7 @@ const Login = () => {
               <Card.Footer className="p-4">
                 <div style={{ textAlign: 'center' }}>
                   <span className="m-1">{t('login.new_account')}</span>
-                  <a href="/signup">{t('login.registration')}</a>
+                  <a href={routes.signup()}>{t('login.registration')}</a>
                 </div>
               </Card.Footer>
             </Card>
