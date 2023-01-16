@@ -42,7 +42,7 @@ const App = () => {
   leoProfanity.add(leoProfanity.getDictionary('ru'));
 
   const rollbarConfig = {
-    accessToken: process.env.ROLLBAR_TOKEN,
+    accessToken: process.env.REACT_APP_ROLLBAR_TOKEN,
     captureUncaught: true,
     captureUnhandledRejections: true,
     payload: {
