@@ -43,7 +43,6 @@ const App = () => {
 
   const rollbarConfig = {
     accessToken: process.env.ROLLBAR_TOKEN,
-    environment: process.env.NODE_ENV,
     captureUncaught: true,
     captureUnhandledRejections: true,
     payload: {
