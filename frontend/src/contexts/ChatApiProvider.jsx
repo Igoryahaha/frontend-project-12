@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-import React, { createContext } from 'react';
+import React, { createContext, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as messagesActions } from '../slices/messagesSlice.js';
@@ -10,59 +9,53 @@ export const ChatContext = createContext({});
 const ChatApiProvider = ({ children, socket }) => {
   const dispatch = useDispatch();
 
-  const addNewChannel = (channel) => socket.emit('newChannel', channel, (data) => {
+  const addNewChannel = useMemo((channel) => socket.emit('newChannel', channel, (data) => {
     if (data.status === 'ok') {
       dispatch(UIActions.setCurrentChannelId({ currentChannelId: data.data.id }));
     }
-  });
+  }), [dispatch, socket]);
 
   socket.on('newChannel', (newChannel) => {
     dispatch(channelsActions.addChannel(newChannel));
   });
 
-  const createNewChatMessage = (message) => socket.emit('newMessage', message, (data) => {
+  const createNewChatMessage = useMemo((message) => socket.emit('newMessage', message, (data) => {
     console.log(data);
-  });
+  }), [socket]);
 
   socket.on('newMessage', (message) => {
     dispatch(messagesActions.addMessage(message));
   });
 
-  const renameChannel = (channel, input) => socket.emit(
-    'renameChannel',
-    { id: channel.id, name: input.name },
-    (data) => {
-      console.log(data);
-    },
-  );
+  const renameChannel = useMemo((channel, input) => socket.emit('renameChannel', { id: channel.id, name: input.name }, (data) => {
+    console.log(data);
+  }), [socket]);
 
   socket.on('renameChannel', (renamedChannel) => {
-    dispatch(channelsActions.updateChannel({
-      id: renamedChannel.id,
-      changes: { ...renamedChannel, name: renamedChannel.name },
-    }));
+    dispatch(
+      channelsActions.updateChannel({
+        id: renamedChannel.id,
+        changes: { ...renamedChannel, name: renamedChannel.name },
+      }),
+    );
   });
 
-  const removeChannel = (channel) => socket.emit(
-    'removeChannel',
-    { id: channel.id },
-    (data) => {
-      console.log(data);
-    },
-  );
+  const removeChannel = useMemo((channel) => socket.emit('removeChannel', { id: channel.id }, (data) => {
+    console.log(data);
+  }), [socket]);
 
   socket.on('removeChannel', (removedChannel) => {
     dispatch(channelsActions.removeChannel(removedChannel.id));
   });
 
-  return (
-    <ChatContext.Provider value={{
+  const value = useMemo(
+    () => ({
       addNewChannel, createNewChatMessage, renameChannel, removeChannel,
-    }}
-    >
-      {children}
-    </ChatContext.Provider>
+    }),
+    [addNewChannel, createNewChatMessage, removeChannel, renameChannel],
   );
+
+  return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
 };
 
 export default ChatApiProvider;

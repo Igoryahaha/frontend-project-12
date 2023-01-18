@@ -16,17 +16,17 @@ const AuthProvider = ({ children }) => {
     setLoggedIn(false);
   }, []);
 
-  const getAuthHeader = () => {
+  const getAuthHeader = useMemo(() => {
     if (userAuth && userAuth.token) {
       return { Authorization: `Bearer ${userAuth.token}` };
     }
     return {};
-  };
+  }, [userAuth]);
 
-  const getUsername = () => userAuth.username;
+  const getUsername = useMemo(() => userAuth.username, [userAuth.username]);
 
-  const authMapping = {
-    401: (authData, setFeedback) => {
+  const authMapping = useMemo(() => ({
+    401: (_, setFeedback) => {
       setFeedback(true);
     },
     200: (authData, setFeedback, navigate) => {
@@ -43,15 +43,14 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem('userAuth', JSON.stringify(data));
       navigate('/', { replace: true });
     },
-    409: (authData, setFeedback) => {
+    409: (_, setFeedback) => {
       setFeedback(true);
     },
-  };
+  }), [logIn]);
 
   const authValue = useMemo(() => ({
     logIn, logOut, loggedIn, getAuthHeader, getUsername, authMapping,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }), [loggedIn, logIn, logOut, getUsername, authMapping]);
+  }), [logIn, logOut, loggedIn, getAuthHeader, getUsername, authMapping]);
 
   return (
     <AuthContext.Provider value={authValue}>

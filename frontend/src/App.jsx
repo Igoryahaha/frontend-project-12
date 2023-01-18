@@ -18,7 +18,7 @@ import ErrorPage from './components/ErrorPage';
 import useAuth from './hooks/useAuth.jsx';
 import AuthProvider from './contexts/AuthProvider';
 import store from './slices/index.js';
-import Main from './components/Main';
+import Main from './components/MainPage';
 import ChatApiProvider from './contexts/ChatApiProvider.jsx';
 import Header from './components/Header';
 import RenderModal from './components/modals';
