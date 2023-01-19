@@ -33,7 +33,7 @@ const Channel = ({ channel }) => {
           {channel.name}
         </Button>
         <Dropdown.Toggle split variant={variant} id="dropdown-split-basic" className="flex-grow-0" style={{ boxShadow: 'none', border: 'none' }}>
-          <span className="visually-hidden">{t('channel_manage')}</span>
+          <span className="visually-hidden">{t('main.channel_manage')}</span>
         </Dropdown.Toggle>
 
         <Dropdown.Menu>

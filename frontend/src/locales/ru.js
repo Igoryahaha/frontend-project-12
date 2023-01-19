@@ -22,6 +22,7 @@ export default {
       delete: 'Удалить',
       rename: 'Переименовать',
       new_message: 'Новое сообщение',
+      channel_manage: 'Управление каналом',
     },
     modals: {
       add_channel: 'Добавить канал',
