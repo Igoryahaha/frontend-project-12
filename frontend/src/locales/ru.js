@@ -21,6 +21,7 @@ export default {
       enter_message: 'Введите сообщение...',
       delete: 'Удалить',
       rename: 'Переименовать',
+      new_message: 'Новое сообщение',
     },
     modals: {
       add_channel: 'Добавить канал',

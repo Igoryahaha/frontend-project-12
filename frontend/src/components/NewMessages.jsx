@@ -44,7 +44,7 @@ const NewMessages = (props) => {
           <Form.Control
             className="border-0 p-0 ps-2 form-control"
             placeholder={t('main.enter_message')}
-            aria-label={t('new_message')}
+            aria-label={t('main.new_message')}
             value={message}
             onChange={handleChange}
             ref={inputRef}
