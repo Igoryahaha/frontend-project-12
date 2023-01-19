@@ -88,7 +88,7 @@ const Registration = () => {
                       ) : null}
                     </Form.Group>
                     <Form.Group className="formGroup mb-3">
-                      <Form.Label htmlFor="password" visuallyHidden="false">{t('password')}</Form.Label>
+                      <Form.Label htmlFor="password" visuallyHidden="false">{t('login.password')}</Form.Label>
                       <Form.Control
                         type="password"
                         placeholder={t('login.password')}
