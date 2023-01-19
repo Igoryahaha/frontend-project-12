@@ -86,20 +86,22 @@ const Login = () => {
                       {t('login.enter')}
                     </h1>
                     <Form.Group className="formGroup mb-3">
-                      <Form.Label htmlFor="username" visuallyHidden="false">
-                        {t('login.name')}
-                      </Form.Label>
                       <Form.Control
                         ref={inputRef}
                         type="text"
                         placeholder={t('login.name')}
                         name="username"
+                        id="username"
                         value={values.username}
                         onChange={handleChange}
                         isInvalid={
                           (touched.username && !!errors.username) || isShowAlert
                         }
                       />
+                      <Form.Label htmlFor="username" visuallyHidden="false">
+                        {t('login.name')}
+                      </Form.Label>
+
                       {errors.username && touched.username ? (
                         <div className="invalid-feedback">
                           {t(errors.username)}
@@ -107,19 +109,21 @@ const Login = () => {
                       ) : null}
                     </Form.Group>
                     <Form.Group className="formGroup mb-3">
-                      <Form.Label htmlFor="password" visuallyHidden="false">
-                        {t('password')}
-                      </Form.Label>
                       <Form.Control
                         type="password"
                         placeholder={t('login.password')}
-                        name="password"
+                        name="username"
+                        id="password"
                         value={values.password}
                         onChange={handleChange}
                         isInvalid={
                           (touched.password && !!errors.password) || isShowAlert
                         }
                       />
+                      <Form.Label htmlFor="password" visuallyHidden="false">
+                        {t('password')}
+                      </Form.Label>
+
                       {errors.password && touched.password ? (
                         <div className="invalid-feedback">
                           {t(errors.password)}
