@@ -62,11 +62,11 @@ const App = () => {
                   <Routes>
                     <Route
                       path="/"
-                      element={
+                      element={(
                         <PrivateRoute>
                           <Main />
                         </PrivateRoute>
-              }
+                      )}
                     />
                     <Route path={routes.login()} element={<Login />} />
                     <Route path={routes.signup()} element={<Registration />} />
@@ -90,7 +90,8 @@ const App = () => {
           </ChatApiProvider>
         </ErrorBoundary>
       </RProvider>
-    </Provider>);
+    </Provider>
+  );
 };
 
 export default App;
