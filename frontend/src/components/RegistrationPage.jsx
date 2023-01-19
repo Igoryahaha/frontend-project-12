@@ -73,7 +73,6 @@ const Registration = () => {
                   <Col xs={{ span: 6 }} sm={{ span: 6 }}>
                     <h1 className="my-3" style={{ textAlign: 'center' }}>{t('login.registration')}</h1>
                     <Form.Group className="formGroup mb-3">
-                      <Form.Label htmlFor="username" visuallyHidden="false">{t('registration.user_name')}</Form.Label>
                       <Form.Control
                         ref={inputRef}
                         type="text"
@@ -83,12 +82,12 @@ const Registration = () => {
                         onChange={handleChange}
                         isInvalid={touched.username && !!errors.username}
                       />
+                      <Form.Label htmlFor="username" visuallyHidden="false">{t('registration.user_name')}</Form.Label>
                       {errors.username && touched.username ? (
                         <div className="invalid-feedback">{t(errors.username)}</div>
                       ) : null}
                     </Form.Group>
                     <Form.Group className="formGroup mb-3">
-                      <Form.Label htmlFor="password" visuallyHidden="false">{t('login.password')}</Form.Label>
                       <Form.Control
                         type="password"
                         placeholder={t('login.password')}
@@ -97,12 +96,12 @@ const Registration = () => {
                         onChange={handleChange}
                         isInvalid={touched.password && !!errors.password}
                       />
+                      <Form.Label htmlFor="password" visuallyHidden="false">{t('login.password')}</Form.Label>
                       {errors.password && touched.password ? (
                         <div className="invalid-feedback">{t(errors.password)}</div>
                       ) : null}
                     </Form.Group>
                     <Form.Group className="formGroup mb-3">
-                      <Form.Label htmlFor="passwordConfirmation" visuallyHidden="false">{t('registration.password_confirmation')}</Form.Label>
                       <Form.Control
                         type="password"
                         placeholder={t('registration.password_confirmation')}
@@ -111,6 +110,7 @@ const Registration = () => {
                         onChange={handleChange}
                         isInvalid={touched.passwordConfirmation && !!errors.passwordConfirmation}
                       />
+                      <Form.Label htmlFor="passwordConfirmation" visuallyHidden="false">{t('registration.password_confirmation')}</Form.Label>
                       {errors.passwordConfirmation && touched.passwordConfirmation ? (
                         <div className="invalid-feedback">{t(errors.passwordConfirmation)}</div>
                       ) : null}
