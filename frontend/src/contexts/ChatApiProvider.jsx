@@ -1,4 +1,4 @@
-import React, { createContext, useMemo } from 'react';
+import React, { createContext, useMemo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as messagesActions } from '../slices/messagesSlice.js';
@@ -9,7 +9,7 @@ export const ChatContext = createContext({});
 const ChatApiProvider = ({ children, socket }) => {
   const dispatch = useDispatch();
 
-  const addNewChannel = useMemo((channel) => socket.emit('newChannel', channel, (data) => {
+  const addNewChannel = useCallback((channel) => socket.emit('newChannel', channel, (data) => {
     if (data.status === 'ok') {
       dispatch(UIActions.setCurrentChannelId({ currentChannelId: data.data.id }));
     }
@@ -19,7 +19,7 @@ const ChatApiProvider = ({ children, socket }) => {
     dispatch(channelsActions.addChannel(newChannel));
   });
 
-  const createNewChatMessage = useMemo((message) => socket.emit('newMessage', message, (data) => {
+  const createNewChatMessage = useCallback((message) => socket.emit('newMessage', message, (data) => {
     console.log(data);
   }), [socket]);
 
@@ -27,7 +27,7 @@ const ChatApiProvider = ({ children, socket }) => {
     dispatch(messagesActions.addMessage(message));
   });
 
-  const renameChannel = useMemo((channel, input) => socket.emit('renameChannel', { id: channel.id, name: input.name }, (data) => {
+  const renameChannel = useCallback((channel, input) => socket.emit('renameChannel', { id: channel.id, name: input.name }, (data) => {
     console.log(data);
   }), [socket]);
 
@@ -40,7 +40,7 @@ const ChatApiProvider = ({ children, socket }) => {
     );
   });
 
-  const removeChannel = useMemo((channel) => socket.emit('removeChannel', { id: channel.id }, (data) => {
+  const removeChannel = useCallback((channel) => socket.emit('removeChannel', { id: channel.id }, (data) => {
     console.log(data);
   }), [socket]);
 

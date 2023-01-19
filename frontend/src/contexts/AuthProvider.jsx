@@ -16,14 +16,14 @@ const AuthProvider = ({ children }) => {
     setLoggedIn(false);
   }, []);
 
-  const getAuthHeader = useMemo(() => {
+  const getAuthHeader = useCallback(() => {
     if (userAuth && userAuth.token) {
       return { Authorization: `Bearer ${userAuth.token}` };
     }
     return {};
   }, [userAuth]);
 
-  const getUsername = useMemo(() => userAuth.username, [userAuth.username]);
+  const getUsername = useCallback(() => userAuth?.username, [userAuth]);
 
   const authMapping = useMemo(() => ({
     401: (_, setFeedback) => {
