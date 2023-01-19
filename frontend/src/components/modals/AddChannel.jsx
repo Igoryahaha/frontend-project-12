@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { validateName } from '../../utils/validation.js';
 import { actions as UIActions } from '../../slices/UISlice.js';
 import { selectors as channelsSelectors } from '../../slices/channelsSlice.js';
-import useChatApi from '../../hooks/useChatApi';
+import useChat from '../../hooks/useChat';
 import toastParams from '../../toastParams.js';
 
 const AddChannel = () => {
@@ -18,7 +18,7 @@ const AddChannel = () => {
   const channelsState = useSelector(channelsSelectors.selectAll);
   const existChannel = channelsState.map(({ name }) => name);
   const schema = validateName(existChannel);
-  const { addNewChannel } = useChatApi();
+  const { addNewChannel } = useChat();
 
   useEffect(() => {
     inputEl.current.focus();

@@ -6,7 +6,7 @@ import { actions as UIActions } from '../slices/UISlice.js';
 
 export const ChatContext = createContext({});
 
-const ChatApiProvider = ({ children, socket }) => {
+const ChatProvider = ({ children, socket }) => {
   const dispatch = useDispatch();
 
   const addNewChannel = useCallback((channel) => socket.emit('newChannel', channel, (data) => {
@@ -58,4 +58,4 @@ const ChatApiProvider = ({ children, socket }) => {
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
 };
 
-export default ChatApiProvider;
+export default ChatProvider;

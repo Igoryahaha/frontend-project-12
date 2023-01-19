@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import toastParams from '../../toastParams.js';
 import { actions as UIActions } from '../../slices/UISlice.js';
-import useChatApi from '../../hooks/useChatApi';
+import useChat from '../../hooks/useChat';
 
 const DeleteChannel = () => {
   const [isSubmitting, setSubmitting] = useState(false);
@@ -13,7 +13,7 @@ const DeleteChannel = () => {
   const dispatch = useDispatch();
   const modalStatus = useSelector((state) => state.currentUI.showModal);
   const targetChannel = useSelector((state) => state.currentUI.targetChannel);
-  const { removeChannel } = useChatApi();
+  const { removeChannel } = useChat();
 
   const inputEl = useRef(null);
   useEffect(() => {

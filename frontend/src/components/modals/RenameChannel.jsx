@@ -8,7 +8,7 @@ import toastParams from '../../toastParams.js';
 import { validateName } from '../../utils/validation.js';
 import { actions as UIActions } from '../../slices/UISlice.js';
 import { selectors as channelsSelectors } from '../../slices/channelsSlice.js';
-import useChatApi from '../../hooks/useChatApi';
+import useChat from '../../hooks/useChat';
 
 const RenameChannel = () => {
   const { t } = useTranslation();
@@ -18,7 +18,7 @@ const RenameChannel = () => {
   const channelsState = useSelector(channelsSelectors.selectAll);
   const existChannel = channelsState.map(({ name }) => name);
   const schema = validateName(existChannel);
-  const { renameChannel } = useChatApi();
+  const { renameChannel } = useChat();
   const targetChannel = useSelector((state) => state.currentUI.targetChannel);
 
   useEffect(() => {

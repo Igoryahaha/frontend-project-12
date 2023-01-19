@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { ArrowRightSquare } from 'react-bootstrap-icons';
 import useAuth from '../hooks/useAuth.jsx';
-import useChatApi from '../hooks/useChatApi';
+import useChat from '../hooks/useChat';
 
 const NewMessages = (props) => {
   const { currentChannelId } = props;
@@ -12,7 +12,7 @@ const NewMessages = (props) => {
   const [message, setMessage] = useState('');
   const inputRef = useRef(null);
   const { getUsername } = useAuth();
-  const { createNewChatMessage } = useChatApi();
+  const { createNewChatMessage } = useChat();
 
   useEffect(() => {
     inputRef.current.focus();
