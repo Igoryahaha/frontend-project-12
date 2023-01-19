@@ -3,7 +3,7 @@ export default {
     logout: 'Выйти',
     login: {
       enter: 'Войти',
-      name: 'Ваш никнейм',
+      name: 'Ваш ник',
       password: 'Пароль',
       registration: 'Регистрация',
       new_account: 'Нет аккаунта?',
