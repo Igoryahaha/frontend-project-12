@@ -16,11 +16,8 @@ export const validateName = (existNames) => {
 export const registrationSchema = yup.object().shape({
   username: yup.string('login.required_field').min(3, 'registration.incorrect_symbols_count').max(20, 'registration.incorrect_symbols_count').required('registration.incorrect_symbols_count'),
   password: yup.string('login.required_field').min(6, 'registration.min_6_symbols').required('registration.min_6_symbols'),
-  passwordConfirmation: yup.string().when('password', {
-    is: (val) => (!!(val && val.length > 0)),
-    then: yup.string().oneOf(
-      [yup.ref('password')],
-      'registration.same_password',
-    ),
-  }),
+  passwordConfirmation: yup.string().oneOf(
+    [yup.ref('password')],
+    'registration.same_password',
+  ),
 });
