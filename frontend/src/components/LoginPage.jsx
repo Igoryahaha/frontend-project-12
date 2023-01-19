@@ -112,7 +112,7 @@ const Login = () => {
                       <Form.Control
                         type="password"
                         placeholder={t('login.password')}
-                        name="username"
+                        name="password"
                         id="password"
                         value={values.password}
                         onChange={handleChange}
