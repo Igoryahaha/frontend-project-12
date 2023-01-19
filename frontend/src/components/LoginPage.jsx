@@ -121,7 +121,7 @@ const Login = () => {
                         }
                       />
                       <Form.Label htmlFor="password" visuallyHidden="false">
-                        {t('password')}
+                        {t('login.password')}
                       </Form.Label>
 
                       {errors.password && touched.password ? (
