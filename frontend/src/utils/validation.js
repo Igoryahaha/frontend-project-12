@@ -13,7 +13,7 @@ export const validateName = (existNames) => {
   return channelSchema;
 };
 
-export const registrationSchema = yup.object().shape({
+export const registrationSchema = () => yup.object().shape({
   username: yup.string('login.required_field').min(3, 'registration.incorrect_symbols_count').max(20, 'registration.incorrect_symbols_count').required('registration.incorrect_symbols_count'),
   password: yup.string('login.required_field').min(6, 'registration.min_6_symbols').required('registration.min_6_symbols'),
   passwordConfirmation: yup.string().when('password', {
