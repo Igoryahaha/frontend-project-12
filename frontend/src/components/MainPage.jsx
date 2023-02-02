@@ -20,13 +20,16 @@ import Chat from './Chat.jsx';
 const Main = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { getAuthHeader } = useAuth();
+  const { getAuthHeader, logOut } = useAuth();
   const headers = getAuthHeader();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getData(headers);
+        if (data.status === 401) {
+          logOut();
+        }
         const { channels, currentChannelId, messages } = data;
         dispatch(channelsActions.addChannels(channels));
         dispatch(messagesActions.addMessages(messages));
@@ -47,7 +50,7 @@ const Main = () => {
   return (
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
       <Row className="h-100 bg-white flex-md-row">
-        <Col sm={4} md={2} className="px-2 pt-5 bg-light border-end">
+        <Col xs={4} sm={4} md={2} className="px-2 pt-5 bg-light border-end">
           <div className="d-flex justify-content-between mb-2 ps-3 pe-2">
             <span>{t('main.channels')}</span>
             <button className="p-0 text-primary btn btn-group-vertical" type="button" onClick={() => openAddChannelModal()}>

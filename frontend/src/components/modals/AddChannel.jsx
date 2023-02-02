@@ -28,6 +28,10 @@ const AddChannel = () => {
     dispatch(UIActions.hideModal());
   };
 
+  const handleCreateChannel = (id) => {
+    dispatch(UIActions.setCurrentChannelId({ currentChannelId: id }));
+  };
+
   return (
     <Modal
       show={modalStatus}
@@ -46,7 +50,7 @@ const AddChannel = () => {
           }}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            addNewChannel(values);
+            addNewChannel(values, handleCreateChannel);
             dispatch(UIActions.hideModal());
             toast.success(t('toast.add_channel'), toastParams);
           }}

@@ -2,18 +2,17 @@ import React, { createContext, useMemo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as messagesActions } from '../slices/messagesSlice.js';
-import { actions as UIActions } from '../slices/UISlice.js';
 
 export const ChatContext = createContext({});
 
 const ChatProvider = ({ children, socket }) => {
   const dispatch = useDispatch();
 
-  const addNewChannel = useCallback((channel) => socket.emit('newChannel', channel, (data) => {
+  const addNewChannel = useCallback((channel, onCreateChannel) => socket.emit('newChannel', channel, (data) => {
     if (data.status === 'ok') {
-      dispatch(UIActions.setCurrentChannelId({ currentChannelId: data.data.id }));
+      onCreateChannel(data.data.id);
     }
-  }), [dispatch, socket]);
+  }), [socket]);
 
   socket.on('newChannel', (newChannel) => {
     dispatch(channelsActions.addChannel(newChannel));

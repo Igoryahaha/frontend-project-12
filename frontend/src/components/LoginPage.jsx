@@ -43,7 +43,7 @@ const Login = () => {
 
   return (
     <Formik
-      validationSchema={loginSchema}
+      validationSchema={loginSchema()}
       onSubmit={async (data, { setSubmitting }) => {
         setSubmitting(true);
         const response = await fetchAuth(data);

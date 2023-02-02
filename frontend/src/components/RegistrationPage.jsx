@@ -39,7 +39,7 @@ const Registration = () => {
 
   return (
     <Formik
-      validationSchema={registrationSchema}
+      validationSchema={registrationSchema()}
       onSubmit={async ({ username, password }, { setSubmitting }) => {
         setSubmitting(true);
         const response = await fetchReg({ username, password });
