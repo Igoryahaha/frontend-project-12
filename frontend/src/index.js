@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import './i18n';
 import reportWebVitals from './reportWebVitals';
 import Init from './init.jsx';
 import 'react-toastify/dist/ReactToastify.css';
