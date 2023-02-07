@@ -29,6 +29,7 @@ const Main = () => {
         const data = await getData(headers);
         if (data.status === 401) {
           logOut();
+          return;
         }
         const { channels, currentChannelId, messages } = data;
         dispatch(channelsActions.addChannels(channels));
